@@ -2,11 +2,6 @@
 #
 class final::pserver {
 
-  exec { 'bash /vagrant/install.sh':
-    command  => 'source /root/.bash_profile',
-    provider => shell,
-  }
-
   exec { 'root_bash_profile':
     command  => 'source /root/.bash_profile',
     provider => shell,

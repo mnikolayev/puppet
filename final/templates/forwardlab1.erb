@@ -1,0 +1,19 @@
+$TTL 86400
+@   IN  SOA     dns.lab1.local. root.lab1.local. (
+        2011071001  ;Serial
+        3600        ;Refresh
+        1800        ;Retry
+        604800      ;Expire
+        86400       ;Minimum TTL
+)
+@       IN  NS          dns.lab1.local.
+@       IN  A           192.168.56.140
+@       IN  A           192.168.56.150
+@       IN  A           192.168.56.156
+dns       IN  A   192.168.56.140
+pserver   IN  A   192.168.56.150
+master    IN  A   192.168.56.150
+puppet    IN  A   192.168.56.150
+node1     IN  A   192.168.56.155
+node2     IN  A   192.168.56.156
+_x-puppet._tcp.lab1.local. IN SRV 0 5 8140 master

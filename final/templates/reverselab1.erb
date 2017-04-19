@@ -1,0 +1,20 @@
+$TTL 86400
+@   IN  SOA     dns.lab1.local. root.lab1.local. (
+        2011071001  ;Serial
+        3600        ;Refresh
+        1800        ;Retry
+        604800      ;Expire
+        86400       ;Minimum TTL
+)
+@       IN  NS          dns.lab1.local.
+@       IN  PTR         lab1.local.
+dns       IN  A   192.168.55.140
+master    IN  A   192.168.56.150
+puppet    IN  A   192.168.56.150
+node1          IN  A   192.168.56.155
+node2          IN  A   192.168.56.156
+140     IN  PTR         dns.lab1.local.
+150     IN  PTR         master.lab1.local.
+150     IN  PTR         puppet.lab1.local.
+155     IN  PTR         node1.lab1.local.
+156     IN  PTR         node2.lab1.local.

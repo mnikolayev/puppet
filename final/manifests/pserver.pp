@@ -2,11 +2,6 @@
 #
 class final::pserver {
 
-  exec { 'bash /vagrant/install.sh':
-    command  => 'source /root/.bash_profile',
-    provider => shell,
-  }
-
   exec { 'root_bash_profile':
     command  => 'source /root/.bash_profile',
     provider => shell,
@@ -33,8 +28,10 @@ class final::pserver {
   }
 
   service { 'puppetserver':
-    ensure  => 'running',
+    enable      => true,
+    ensure      => running,
+    restart     => true,
     require => File['/etc/puppetlabs/puppet/autosign.conf'],
+    #require    => Class["config"],
   }
 }
-

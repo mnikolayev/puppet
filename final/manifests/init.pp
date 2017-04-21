@@ -10,5 +10,6 @@ class final {
   else {
     include final::node1
   }
+  include final::resolve
 }
 

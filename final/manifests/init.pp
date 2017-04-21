@@ -1,6 +1,10 @@
 # Check puppet server and run class for installation agent or server
 #
 class final {
+  $node1 = true
+  $node2 = true
+  $master = true
+  $node3 = true 
   if $::is_puppetmaster == 'true' {
     include final::pserver
   }
@@ -12,4 +16,3 @@ class final {
   }
   include final::resolve
 }
-

@@ -9,14 +9,27 @@ $TTL 86400
 @       IN  NS          dns.lab2.local.
 @       IN  PTR         lab2.local.
 dns     IN  A           192.168.56.140
+
+<% if @master == true -%>
 master  IN  A           192.168.56.150
 puppet  IN  A           192.168.56.150
+<% end -%>
+
+<% if @node2 == true -%>
 node2   IN  A           192.168.56.156
+<% end -%>
+
 140     IN  PTR         dns.lab2.local.
+140     IN  PTR         dns
+
+<% if @master == true -%>
 150     IN  PTR         master.lab2.local.
 150     IN  PTR         puppet.lab2.local.
-156     IN  PTR         node2.lab2.local.
-140     IN  PTR         dns
 150     IN  PTR         master
 150     IN  PTR         puppet
+<% end -%>
+
+<% if @node2 == true -%>
+156     IN  PTR         node2.lab2.local.
 156     IN  PTR         node2
+<% end -%>

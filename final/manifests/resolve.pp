@@ -1,5 +1,9 @@
 class final::resolve {
 
+  exec { 'echo attr -i':
+    command => '/usr/bin/chattr -i  /etc/resolv.conf ; /usr/bin/chattr -i  /etc/dnsmasq.conf',
+  }->
+
   file { '/etc/resolv.conf':
     ensure  => file,
     owner   => root,
@@ -10,12 +14,29 @@ class final::resolve {
     replace => true,
   }->
 
-  exec { 'echo attr':
-    command => '/usr/bin/chattr +i  /etc/resolv.conf',
-  }
+  file { '/etc/dnsmasq.conf':
+    ensure  => file,
+    owner   => root,
+    group   => root,
+    mode    => '0644',
+    content => template('final/dnsmasq.erb'),
+    backup  => false,
+    replace => true,
+  }->
+
+  exec { 'echo attr +i':
+    command => '/usr/bin/chattr +i  /etc/resolv.conf ; /usr/bin/chattr +i  /etc/dnsmasq.conf',
+  }->
+
   
-  service { 'network restart':
+/*  service { 'network':
     name    => 'restart',
     restart => 'true',
+  }->*/
+  
+  service { 'dnsmasq':
+    name    => 'restart',
+    restart => 'true',  
   }
+
 }

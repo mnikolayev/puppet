@@ -9,6 +9,8 @@ $TTL 86400
 @       IN  NS          dns.lab1.local.
 @       IN  PTR         lab1.local.
 dns     IN  A           192.168.55.140
+<% if @node1 == true -%>
 node1   IN  A           192.168.55.155
 155     IN  PTR         node1.lab1.local.
 155     IN  PTR         node1
+<% end -%>

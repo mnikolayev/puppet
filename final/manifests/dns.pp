@@ -130,7 +130,7 @@ class final::dns {
     require => File['/etc/named.conf'],
   }->
 
-  service { 'network':
+  service { 'network.service':
     restart => 'true',
     require => File['/etc/named.conf'],
   }->

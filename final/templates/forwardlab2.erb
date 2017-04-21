@@ -11,14 +11,20 @@ $TTL 86400
 @         IN  A             192.168.56.150
 @         IN  A             192.168.56.156
 dns       IN  A             192.168.56.140
-pserver   IN  A             192.168.56.150
-master    IN  A             192.168.56.150
-puppet    IN  A             192.168.56.150
+dns.lab2.local       IN  A  192.168.56.140
+
+<% if @node2 == true -%>
 node2     IN  A             192.168.56.156
-dns.lab2.local       IN  A             192.168.56.140
-pserver.lab2.local   IN  A             192.168.56.150
-master.lab2.local    IN  A             192.168.56.150
-puppet.lab2.local    IN  A             192.168.56.150
-node2.lab2.local     IN  A             192.168.56.156
+node2.lab2.local     IN  A  192.168.56.156
+<% end -%>
+
+<% if @master == true -%>
+pserver.lab2.local   IN  A  192.168.56.150
+master.lab2.local    IN  A  192.168.56.150
+puppet.lab2.local    IN  A  192.168.56.150
+pserver              IN  A  192.168.56.150
+master               IN  A  192.168.56.150
+puppet               IN  A  192.168.56.150
+<% end -%>
 
 _x-puppet._tcp.lab2.local. IN SRV 0 5 8140 master
